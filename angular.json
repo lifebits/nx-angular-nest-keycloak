@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "projects": {
+    "angular-keycloak": "apps/angular-keycloak",
+    "angular-keycloak-e2e": "apps/angular-keycloak-e2e",
+    "api": "apps/api",
+    "api-interfaces": "libs/api-interfaces"
+  }
+}

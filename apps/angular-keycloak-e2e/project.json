@@ -1,0 +1,28 @@
+{
+  "root": "apps/angular-keycloak-e2e",
+  "sourceRoot": "apps/angular-keycloak-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/angular-keycloak-e2e/cypress.json",
+        "devServerTarget": "angular-keycloak:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "angular-keycloak:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/angular-keycloak-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["angular-keycloak"]
+}

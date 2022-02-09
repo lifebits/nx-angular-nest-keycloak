@@ -1,0 +1,97 @@
+{
+  "projectType": "application",
+  "root": "apps/angular-keycloak",
+  "sourceRoot": "apps/angular-keycloak/src",
+  "prefix": "nx-angular-nest-keycloak",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/angular-keycloak",
+        "index": "apps/angular-keycloak/src/index.html",
+        "main": "apps/angular-keycloak/src/main.ts",
+        "polyfills": "apps/angular-keycloak/src/polyfills.ts",
+        "tsConfig": "apps/angular-keycloak/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/angular-keycloak/src/favicon.ico",
+          "apps/angular-keycloak/src/assets"
+        ],
+        "styles": ["apps/angular-keycloak/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/angular-keycloak/src/environments/environment.ts",
+              "with": "apps/angular-keycloak/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "angular-keycloak:build:production"
+        },
+        "development": {
+          "browserTarget": "angular-keycloak:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "apps/angular-keycloak/proxy.conf.json"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "angular-keycloak:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/angular-keycloak/src/**/*.ts",
+          "apps/angular-keycloak/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/angular-keycloak"],
+      "options": {
+        "jestConfig": "apps/angular-keycloak/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
