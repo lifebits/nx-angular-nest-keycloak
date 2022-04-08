@@ -2,8 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
 
+import {  } from 'nest-keycloak-connect';
+
 @Injectable()
 export class AuthService {
+  getHello(): string {
+    return 'Hello';
+  }
+
   create(createAuthDto: CreateAuthDto) {
     return 'This action adds a new auth';
   }

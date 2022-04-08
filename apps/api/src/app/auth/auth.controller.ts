@@ -10,14 +10,20 @@ import {
 import { AuthService } from './auth.service';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
+import { Public, AuthenticatedUser } from "nest-keycloak-connect";
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService) {}
 
   @Post()
+  @Public()
   create(@Body() createAuthDto: CreateAuthDto) {
-    return this.authService.create(createAuthDto);
+    // return this.authService.create(createAuthDto);
+    console.log(createAuthDto);
+
+    return `Test message`;
   }
 
   @Get()
